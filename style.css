@@ -1,6 +1,7 @@
 :root {
     --main-color: #654321; /* Brown */
     --accent-color: #770077; /* Purple */
+    --selected-group-color: #a53e3e; /* Light gray */
 }
 
 body {
@@ -9,13 +10,17 @@ body {
     padding: 0;
     background-color: #f9f9f9;
 }
-nav{
+
+nav {
     display: flex;
     justify-content: center;
     box-shadow: 2px 2px 2px #222;
     background-color: var(--main-color);
-    color: #ac9783  ;
+    color: #ac9783;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -44,6 +49,10 @@ nav{
     background-color: #f0f0f0;
     border-radius: 5px;
     margin-bottom: 5px;
+}
+
+.selected-group {
+    background-color: var(--selected-group-color);
 }
 
 .chat {
