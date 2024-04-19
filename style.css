@@ -26,16 +26,21 @@ nav {
     justify-content: center;
     align-items: flex-start;
 }
-
+.connection{
+    width: 30%;
+}
 .groups {
     flex: 1;
-    padding: 20px;
+    padding: 20px 20px 20px 2px;
 }
 
 .groups h2 {
-    color: var(--main-color);
+    color: white;
     border-bottom: 2px solid var(--main-color);
-    padding-bottom: 10px;
+    background-color: var(--main-color);
+    padding: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .groups ul {
