@@ -1,17 +1,9 @@
-
 function selectGroup(group) {
     var groupName = group.innerText;
     document.getElementById("groupName").innerText = groupName;
-    loadChatMessages(group);
+    // Panggil fungsi untuk memuat anggota grup saat grup dipilih
+    loadGroupMembers(groupName);
 }
-
-
-function selectFriend(friend) {
-    // Implementasikan logika pemilihan teman di sini
-    var friendName = friend.innerText;
-    document.getElementById("groupName").innerText = friendName;
-}
-
 
 function sendMessage() {
     var message = document.getElementById("messageInput").value;
@@ -35,8 +27,6 @@ function sendMessage() {
     };
     xhr.send("group=" + selectedGroup + "&message=" + message);
 }
-
-
 
 // Fungsi untuk memuat pesan secara berkala
 function loadChatMessages(selectedItem) {
@@ -69,5 +59,56 @@ function loadChatMessages(selectedItem) {
 // Memuat pesan secara otomatis setiap beberapa detik (misalnya, setiap 5 detik)
 setInterval(function() {
     loadChatMessages(document.getElementById("groupName"));
-}, 2000); // 5000 milliseconds = 5 detik
+}, 2000); // 2000 milliseconds = 2 detik
 
+// Fungsi untuk memuat anggota grup saat grup dipilih
+// Fungsi untuk memuat anggota grup saat grup dipilih
+function loadGroupMembers(groupName) {
+    // Kirim permintaan AJAX ke skrip PHP untuk mendapatkan daftar anggota grup beserta peran (admin/member)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "get_group_members.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Respon dari server (data anggota grup dalam format JSON)
+            var response = xhr.responseText;
+            var members = JSON.parse(response);
+
+            // Tampilkan anggota grup dalam daftar
+            var groupMembersList = document.getElementById("groupMembersList");
+            groupMembersList.innerHTML = ""; // Kosongkan daftar sebelum menambahkan anggota baru
+            members.forEach(function (member) {
+                var memberItem = document.createElement("li");
+                // Tambahkan nama anggota
+                memberItem.textContent = member.username;
+                // Tambahkan keterangan peran (admin/member)
+                var roleSpan = document.createElement("span");
+                roleSpan.textContent = " (" + member.role + ")";
+                roleSpan.style.marginLeft = "5px"; // Beri jarak dari nama anggota
+                memberItem.appendChild(roleSpan);
+                groupMembersList.appendChild(memberItem);
+            });
+        }
+    };
+    xhr.send("group=" + groupName);
+}
+
+function addNewGroup() {
+    // Redirect ke halaman pembuatan grup
+    window.location.href = "create_grup/create_group.html"; // Ganti dengan URL halaman pembuatan grup yang sebenarnya
+}
+// Ambil pesan konfirmasi dari URL jika ada
+const urlParams = new URLSearchParams(window.location.search);
+const success = urlParams.get('success');
+
+// Cek apakah parameter success=true ada dalam URL
+if (success === "true") {
+    // Tampilkan pesan konfirmasi
+    const successMessage = document.getElementById('successMessage');
+    successMessage.style.display = 'block';
+
+    // Sembunyikan pesan konfirmasi setelah 3 detik
+    setTimeout(function() {
+        successMessage.style.display = 'none';
+    }, 3000);
+}

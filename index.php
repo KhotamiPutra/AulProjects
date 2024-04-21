@@ -40,10 +40,15 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <nav>
-        <h1>Group Chatting</h1>
-        <p>Welcome, <?php echo $username; ?></p>
-    </nav>
+<nav>
+    <h1>Group Chatting</h1>
+    <p>Welcome, <?php echo $username; ?></p>
+    <button onclick="addNewGroup()">Tambah Grup</button>
+</nav>
+<div id="successMessage" style="display: none;">
+    Grup telah berhasil dibuat!
+</div>
+
     <div class="container">
         <div class="connection">
             <div class="groups">
@@ -97,6 +102,11 @@ if (isset($_SESSION['username'])) {
             </div>
 
         </div>
+        <div id="groupMembersContainer">
+    <h3>Anggota Grup</h3>
+    <ul id="groupMembersList"></ul>
+</div>
+
     </div>
 
     <script src="script.js"></script>
@@ -111,6 +121,7 @@ if (isset($_SESSION['username'])) {
         alert('Menambahkan grup...');
     }
     </script>
+
 </body>
 
 </html>
