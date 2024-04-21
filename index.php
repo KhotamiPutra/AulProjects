@@ -79,6 +79,7 @@ if (isset($_SESSION['username'])) {
             </div>
 
         </div>
+        
         <div class="chat">
             <div id="chatHeader">
                 <h2 id="groupName">Pilih Grup</h2>
@@ -92,8 +93,9 @@ if (isset($_SESSION['username'])) {
             </div>
             <div id="messageInputContainer">
                 <input type="text" id="messageInput" placeholder="Ketik pesan...">
-                <button id="sendMessageBtn">Kirim</button>
+                <button id="sendMessageBtn" onclick="sendMessage()">Kirim</button>
             </div>
+
         </div>
     </div>
 
