@@ -43,7 +43,7 @@ if (isset($_SESSION['username'])) {
 <nav>
     <h1>Group Chatting</h1>
     <p>Welcome, <?php echo $username; ?></p>
-    <button onclick="addNewGroup()">Tambah Grup</button>
+    
 </nav>
 <div id="successMessage" style="display: none;">
     Grup telah berhasil dibuat!
@@ -88,6 +88,7 @@ if (isset($_SESSION['username'])) {
         <div class="chat">
             <div id="chatHeader">
                 <h2 id="groupName">Pilih Grup</h2>
+                <button onclick="addNewGroup()">Tambah Grup</button>
                 <p id="groupMembers"></p>
             </div>
             <div id="chatMessages">

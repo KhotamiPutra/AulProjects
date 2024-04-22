@@ -59,7 +59,7 @@ function loadChatMessages(selectedItem) {
 // Memuat pesan secara otomatis setiap beberapa detik (misalnya, setiap 5 detik)
 setInterval(function() {
     loadChatMessages(document.getElementById("groupName"));
-}, 2000); // 2000 milliseconds = 2 detik
+}, 4000); // 2000 milliseconds = 2 detik
 
 // Fungsi untuk memuat anggota grup saat grup dipilih
 // Fungsi untuk memuat anggota grup saat grup dipilih
