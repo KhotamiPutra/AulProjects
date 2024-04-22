@@ -40,19 +40,22 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-<nav>
-    <h1>Group Chatting</h1>
-    <p>Welcome, <?php echo $username; ?></p>
-    
-</nav>
-<div id="successMessage" style="display: none;">
-    Grup telah berhasil dibuat!
-</div>
+    <nav>
+        <h1>Group Chatting</h1>
+        <div class="profile">
+            <img src="asset/user.png" alt="" srcset="">
+            <p>Welcome, <?php echo $username; ?></p>
+        </div>
+
+    </nav>
+    <div id="successMessage" style="display: none;">
+        Grup telah berhasil dibuat!
+    </div>
 
     <div class="container">
         <div class="connection">
             <div class="groups">
-                <h2>Daftar Grup</h2>
+                <h2>Message</h2>
                 <ul id="groupList">
                     <?php
         if (mysqli_num_rows($result_groups) > 0) {
@@ -65,6 +68,7 @@ if (isset($_SESSION['username'])) {
         }
         ?>
                 </ul>
+                <button onclick="addNewGroup()">Tambah Grup</button>
             </div>
 
             <div class="friend">
@@ -84,19 +88,17 @@ if (isset($_SESSION['username'])) {
             </div>
 
         </div>
-        
+
         <div class="chat">
             <div id="chatHeader">
                 <h2 id="groupName">Pilih Grup</h2>
-                <button onclick="addNewGroup()">Tambah Grup</button>
                 <p id="groupMembers"></p>
             </div>
-            <div id="chatMessages">
-                <!-- Chat messages will be populated dynamically -->
-                <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                <div class="message">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat.</div>
+            <div id="chatMessages" class="message-container">
+                <div class="sent-message">Ini adalah pesan yang dikirim.</div>
+                <div class="received-message">Ini adalah pesan yang diterima.</div>
             </div>
+
             <div id="messageInputContainer">
                 <input type="text" id="messageInput" placeholder="Ketik pesan...">
                 <button id="sendMessageBtn" onclick="sendMessage()">Kirim</button>
@@ -104,9 +106,9 @@ if (isset($_SESSION['username'])) {
 
         </div>
         <div id="groupMembersContainer">
-    <h3>Anggota Grup</h3>
-    <ul id="groupMembersList"></ul>
-</div>
+            <h3>Anggota Grup</h3>
+            <ul id="groupMembersList"></ul>
+        </div>
 
     </div>
 
