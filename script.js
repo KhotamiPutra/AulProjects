@@ -41,14 +41,20 @@ function loadChatMessages(selectedItem) {
       var response = xhr.responseText;
       var messages = JSON.parse(response);
 
+      // Membalikkan urutan pesan
+      messages.reverse();
+
       // Menampilkan pesan-pesan dalam area obrolan
       var chatMessages = document.getElementById("chatMessages");
       chatMessages.innerHTML = ""; // Kosongkan area obrolan sebelum menampilkan pesan baru
       messages.forEach(function (msg) {
         var messageDiv = document.createElement("div");
         // Tentukan kelas pesan berdasarkan peran pengguna
-        messageDiv.className =
-          msg.sender === "Me" ? "sent-message" : "received-message";
+        if (msg.sender === "Me") {
+          messageDiv.className = "sent-message";
+        } else {
+          messageDiv.className = "received-message";
+        }
         messageDiv.innerHTML =
           "<strong>" +
           msg.sender +
@@ -59,10 +65,14 @@ function loadChatMessages(selectedItem) {
           ")</span>";
         chatMessages.appendChild(messageDiv);
       });
+
+      // Setel scrollTop ke tinggi elemen untuk menggulir ke bawah
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
   };
   xhr.send("group=" + selectedGroup);
 }
+
 
 // Memuat pesan secara otomatis setiap beberapa detik (misalnya, setiap 5 detik)
 setInterval(function () {
@@ -118,4 +128,13 @@ if (success === "true") {
   setTimeout(function () {
     successMessage.style.display = "none";
   }, 3000);
+}
+
+// JavaScript
+function showAddFriendForm() {
+  document.getElementById("addFriendModal").style.display = "block";
+}
+
+function closeAddFriendForm() {
+  document.getElementById("addFriendModal").style.display = "none";
 }

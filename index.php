@@ -94,6 +94,7 @@ if (isset($_SESSION['username'])) {
                 <h2 id="groupName">Pilih Grup</h2>
                 <p id="groupMembers"></p>
             </div>
+            
             <div id="chatMessages" class="message-container">
                 <div class="sent-message">Ini adalah pesan yang dikirim.</div>
                 <div class="received-message">Ini adalah pesan yang diterima.</div>

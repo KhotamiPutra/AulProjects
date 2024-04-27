@@ -14,6 +14,7 @@ body {
     background-color: #131517;
     width: 100%;
     height: 86.9vh;
+    overflow: hidden;
 }       
 
 nav{
@@ -87,5 +88,12 @@ nav .profile img{
     padding: 10px;
     margin: 5px 0;
 }
+#groupList, #friendList {
+    max-height: 250px; 
+    overflow-y: auto; 
+}
 
-
+#groupMembersContainer{
+    width: 20%;
+    color: white;
+}
