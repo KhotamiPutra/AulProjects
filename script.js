@@ -129,3 +129,31 @@ if (success === "true") {
     successMessage.style.display = "none";
   }, 3000);
 }
+
+function showAddFriendForm() {
+  var addFriendForm = document.getElementById("addFriendForm");
+  addFriendForm.style.display = "block";
+}
+
+function searchFriend() {
+  var searchQuery = document.getElementById("searchInput").value;
+  // Kirim permintaan AJAX untuk mencari teman berdasarkan query
+  // Tampilkan hasil pencarian di bawah form
+}
+
+function addFriend(userId) {
+  // Kirim permintaan AJAX untuk menambahkan teman berdasarkan userId
+  // Perbarui daftar teman setelah teman ditambahkan
+}
+
+// Script.js
+var addFriendBtn = document.getElementById("addFriendBtn");
+addFriendBtn.addEventListener("click", showAddFriendForm);
+
+var searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click", searchFriend);
+
+function closeForm() {
+  var form = document.getElementById("addFriendForm");
+  form.style.display = "none";
+}

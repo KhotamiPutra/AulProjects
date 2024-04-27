@@ -73,6 +73,7 @@ if (isset($_SESSION['username'])) {
 
             <div class="friend">
                 <h2>Daftar Teman</h2>
+                <button id="addFriendBtn">Tambah Teman</button>
                 <ul id="friendList">
                     <?php
         if (mysqli_num_rows($result_friends) > 0) {
@@ -94,7 +95,7 @@ if (isset($_SESSION['username'])) {
                 <h2 id="groupName">Pilih Grup</h2>
                 <p id="groupMembers"></p>
             </div>
-            
+
             <div id="chatMessages" class="message-container">
                 <div class="sent-message">Ini adalah pesan yang dikirim.</div>
                 <div class="received-message">Ini adalah pesan yang diterima.</div>
@@ -111,6 +112,15 @@ if (isset($_SESSION['username'])) {
             <ul id="groupMembersList"></ul>
         </div>
 
+    </div>
+    <!-- pop up tambah teman -->
+    <div id="addFriendForm" style="display: none;">
+        <button id="closeFormBtn" onclick="closeForm()">X</button>
+        <input type="text" id="searchInput" placeholder="Cari teman...">
+        <button id="searchBtn">Cari</button>
+        <div id="searchResults">
+            <!-- Hasil pencarian akan ditampilkan di sini -->
+        </div>
     </div>
 
     <script src="script.js"></script>
