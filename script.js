@@ -129,12 +129,3 @@ if (success === "true") {
     successMessage.style.display = "none";
   }, 3000);
 }
-
-// JavaScript
-function showAddFriendForm() {
-  document.getElementById("addFriendModal").style.display = "block";
-}
-
-function closeAddFriendForm() {
-  document.getElementById("addFriendModal").style.display = "none";
-}
