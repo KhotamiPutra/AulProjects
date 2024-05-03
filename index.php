@@ -73,7 +73,7 @@ if (isset($_SESSION['username'])) {
 
             <div class="friend">
                 <h2>Daftar Teman</h2>
-                <button id="addFriendBtn">Tambah Teman</button>
+                <button>Tambah teman</button>
                 <ul id="friendList">
                     <?php
         if (mysqli_num_rows($result_friends) > 0) {
@@ -110,31 +110,21 @@ if (isset($_SESSION['username'])) {
         <div id="groupMembersContainer">
             <h3>Anggota Grup</h3>
             <ul id="groupMembersList"></ul>
-        </div>
-
-    </div>
-    <!-- pop up tambah teman -->
-    <div id="addFriendForm" style="display: none;">
-        <button id="closeFormBtn" onclick="closeForm()">X</button>
-        <input type="text" id="searchInput" placeholder="Cari teman...">
-        <button id="searchBtn">Cari</button>
-        <div id="searchResults">
-            <!-- Hasil pencarian akan ditampilkan di sini -->
+            <button>Tambah Anggota</button>
         </div>
     </div>
 
     <script src="script.js"></script>
-    <script>
-    function addFriend() {
-        // Logic untuk menambahkan teman
-        alert('Menambahkan teman...');
-    }
+    <?php
+// ...
+$friend_list = array();
 
-    function addGroup() {
-        // Logic untuk menambahkan grup
-        alert('Menambahkan grup...');
+if (mysqli_num_rows($result_friends) > 0) {
+    while ($row = mysqli_fetch_assoc($result_friends)) {
+        $friend_list[] = $row["username"];
     }
-    </script>
+}
+?>
 
 </body>
 
